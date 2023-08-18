@@ -26,14 +26,15 @@ pip install -r requirements.txt
 autoscaling_group_name: Specify the name of the Auto Scaling group that you want to refresh.
 Deploy the Lambda function to AWS using the AWS CLI:
 
-bash
-Copy code
+```bash
 aws lambda create-function --function-name InstanceRefreshFunction \
     --runtime python3.8 --role your-lambda-role-arn \
     --handler lambda_function.lambda_handler --zip-file fileb://lambda_function.zip
+```
+
 Replace your-lambda-role-arn with the ARN of the IAM role that the Lambda function will assume.
 
-Create an event source (such as an S3 bucket, an SNS topic, or an API Gateway) that triggers the Lambda function when needed.
+Create an event source (such as an Eventbridge, S3 bucket, an SNS topic, or an API Gateway) that triggers the Lambda function when needed.
 Triggering the Function
 Once the function is deployed and properly triggered, it will initiate an instance refresh for the specified Auto Scaling group. Monitor the progress of the instance refresh in the AWS Management Console.
 
